@@ -1,0 +1,13 @@
+[user]
+	name = Alexander Zulechner
+	email = alexander.zulechner@craftworks.at
+
+[core]
+	editor = nano
+	ignorecase = false
+[push]
+	default = current
+[color]
+	ui = true
+[alias]
+	quick-stats = ! /usr/local/bin/git-quick-stats
