@@ -1,2 +1,6 @@
 # zshrc-conf
-config for zsh
+configurations for:
+
+* jetbrains ide-settings.jar
+* .zshrc
+* global .gitconfig
