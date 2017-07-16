@@ -5,7 +5,7 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 zmodload zsh/zprof
 
 SAVEHIST=1000
-DEFAULT_USER="alexanderzulechner"
+DEFAULT_USER="__user__"
 skip_global_compinit=1
  
 # Load the oh-my-zsh's library.
@@ -24,7 +24,7 @@ antigen bundle brew-cask
 # antigen bundle robertzk/hipchat.zsh
  
 # bitbucket
-# antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
+antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
  
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -68,7 +68,14 @@ alias ia="open $1 -a /Applications/iA\ Writer.app"
  
 # nvm
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# own shell scripts
+export PATH="/Users/__user__/shellscripts/bin:$PATH"
+export PATH="/Users/__user__/anaconda/bin:$PATH"
+
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 zprof
 
