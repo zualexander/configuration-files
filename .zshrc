@@ -32,8 +32,12 @@ antigen bundle zsh-users/zsh-syntax-highlighting
  
 # suggestions
 antigen bundle tarruda/zsh-autosuggestions
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=5
+
  
 # antigen bundle mafredri/zsh-async
+
+
 # Load the theme.
 # antigen bundle sindresorhus/pure # https://github.com/sindresorhus/pure
 # or
@@ -48,19 +52,9 @@ antigen apply
 ###   aliases
 ###
 ##############################################################################
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-alias ia="open $1 -a /Applications/iA\ Writer.app"
-
-# for later if more aliases are necessary
-#if [ -f ~/.config/aliases ]; then
-#    source ~/.config/aliases
-#fi
+if [ -f ~/.config/aliases ]; then
+    source ~/.config/aliases
+fi
 
 
 ## the fuck
@@ -72,15 +66,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # own shell scripts
-export PATH="/Users/__user__/shellscripts/bin:$PATH"
-export PATH="/Users/__user__/anaconda/bin:$PATH"
+export PATH="/Users/$DEFAULT_USER/shellscripts/bin:$PATH"
+export PATH="/Users/$DEFAULT_USER/anaconda/bin:$PATH"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 zprof
-
-
-## sendhybrid e-brief
-export SHELL=/usr/local/bin/zsh
-# Init jenv
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
