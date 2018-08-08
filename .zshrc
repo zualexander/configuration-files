@@ -85,12 +85,12 @@ SPACESHIP_PROMPT_ORDER=(
 # Tell antigen that you're done.
 antigen apply
 
+
 ##############################################################################
 ###
 ###   aliases
 ###
 ##############################################################################
-<<<<<<< HEAD
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -100,70 +100,7 @@ antigen apply
 # alias zshconfig="mate ~/.zshrc"
 alias ia="open $1 -a /Applications/iA\ Writer.app"
 
-# for later if more aliases are necessary
-#if [ -f ~/.config/aliases ]; then
-#    source ~/.config/aliases
-#fi
 
- 
- 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
-
-#zprof
-=======
-if [ -f ~/.config/aliases ]; then
-    source ~/.config/aliases
-fi
-
-
-## the fuck
-  eval "$(thefuck --alias)" 
- 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# own shell scripts
-export PATH="/Users/$DEFAULT_USER/shellscripts/bin:$PATH"
-export PATH="/Users/$DEFAULT_USER/anaconda/bin:$PATH"
-
-## CORDOVA
-# Create a JAVA_HOME variable, determined dynamically
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home
-# Add that to the global PATH variable
-
-
-export PATH=$JAVA_HOME/bin:$PATH
-# Set Android_HOME
-export ANDROID_HOME=~/Library/Android/sdk/
-# Add the Android SDK to the ANDROID_HOME variable
-export PATH=$ANDROID_HOME/platform-tools:$PATH
-export PATH=$ANDROID_HOME/tools:$PATH
-export PATH=$PATH:/usr/local/Cellar/gradle/4.9/bin
-
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-zprofbecontext   # Kubectl context section
-  exec_time     # Execution time
-  line_sep      # Line break
-  battery       # Battery level and status
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-
-# Tell antigen that you're done.
-antigen apply
-
-##############################################################################
-###
-###   aliases
-###
-##############################################################################
 if [ -f ~/.config/aliases ]; then
     source ~/.config/aliases
 fi
