@@ -11,7 +11,7 @@ configurations for:
 * install iterm2
 * install homebrew: http://brew.sh
 
-* `brew install zsh zsh-completions antigen git git-extras`
+* `brew install zsh zsh-completions antigen git git-extras thefuck`
 * install "thefuck" 
 * `nano ~/.zshrc`
 
