@@ -6,23 +6,30 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 zmodload zsh/zprof
 
 SAVEHIST=1000
-DEFAULT_USER="__user__"
+DEFAULT_USER="__USERNAME__"
 skip_global_compinit=1
  
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
-# antigen bundles to load (for a complete list see https://github.com/unixorn/awesome-zsh-plugins )
+
+#####################################################################################################
+# antigen bundles to load (for a complete list see https://github.com/unixorn/awesome-zsh-plugins )#
+####################################################################################################
+
+# git and git- extra commands
 antigen bundle git
 antigen bundle unixorn/git-extra-commands
+
+# colored man pages
+antigen bundle colored-man-pages
+
 antigen bundle command-not-found
 antigen bundle extract
+
 # brew autocompletion
 antigen bundle brew
 antigen bundle brew-cask
  
- 
-# hipchat (to send msgs via cli)
-# antigen bundle robertzk/hipchat.zsh
  
 # bitbucket
 antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
@@ -106,7 +113,7 @@ fi
 
 
 ## the fuck
-  eval "$(thefuck --alias)" 
+  eval $(thefuck --alias)
  
 # nvm
 export NVM_DIR="$HOME/.nvm"
