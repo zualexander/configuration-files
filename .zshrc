@@ -6,7 +6,7 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 zmodload zsh/zprof
 
 SAVEHIST=1000
-DEFAULT_USER="__USERNAME__"
+DEFAULT_USER="__USER__"
 skip_global_compinit=1
  
 # Load the oh-my-zsh's library.
@@ -30,6 +30,8 @@ antigen bundle extract
 antigen bundle brew
 antigen bundle brew-cask
  
+#iterm color tab
+antigen bundle tysonwolker/iterm-tab-colors
  
 # bitbucket
 antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
