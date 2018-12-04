@@ -31,7 +31,7 @@ antigen bundle brew
 antigen bundle brew-cask
  
 #iterm color tab
-antigen bundle tysonwolker/iterm-tab-colors
+#antigen bundle tysonwolker/iterm-tab-colors
  
 # bitbucket
 antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
@@ -54,7 +54,9 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=5
 # antigen theme robbyrussell #
 # or
 #antigen theme https://github.com/denysdovhan/spaceship-zsh-theme spaceship # https://github.com/denysdovhan/spaceship-zsh-theme
-# or 
+# or
+# antigen theme agnoster 
+# or
 antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stampts section
