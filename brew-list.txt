@@ -1,70 +1,31 @@
-android-platform-tools 24
 antigen 2.2.3
+autoconf 2.69
+automake 1.16.1_1
 bat 0.9.0
-bazel 0.18.0 0.18.1
-curl 7.61.1 7.62.0
-dive 0.3.0
 fd 7.2.0
 fish 2.7.1
-freetype 2.9.1
+fx 10.0.0
 fzf 0.17.5
 gdbm 1.18.1
 gettext 0.19.8.1
-ghostscript 9.26
-git 2.19.1 2.19.2
+git 2.19.2
 git-extras 4.6.0
-git-standup 2.3.0 2.2.0
-glib 2.58.1
-gradle 5.1 4.10.2
-icu4c 62.1
-imagemagick 7.0.8-14
-iproute2mac 1.2.2
-jemalloc 5.1.0
-jenv 0.4.4
-jpeg 9c
-kubernetes-cli 1.12.2 1.12.3
-libevent 2.1.8
-libffi 3.2.1
-libidn2 2.0.5
-libpng 1.6.35
-libtermkey 0.20
-libtiff 4.0.10
+git-standup 2.3.1
+icu4c 63.1
 libtool 2.4.6_1
-libunistring 0.9.10
-libuv 1.24.0 1.23.2
-libvterm 681
 libzip 1.5.1
-little-cms2 2.9
-luajit 2.0.5
-maven 3.6.0
-msgpack 3.1.1
 ncurses 6.1
-neovim 0.3.1
-node 11.2.0 11.0.0
-openjpeg 2.3.0
+node 11.7.0
+nvm 0.33.11
 openssl 1.0.2q
-pcre 8.42
 pcre2 10.32
 peco 0.5.3
 pkg-config 0.29.2
-postgresql 10.5
-pstree 2.39
-python 3.7.0 3.7.1
+python 3.7.1
 readline 7.0.5
-ripgrep 0.10.0
-socat 1.7.3.2_2
-sqlite 3.25.3 3.25.2
-sshfs 2.10
-telepresence 0.94 0.93
-thefuck 3.27_1
+sqlite 3.26.0
+thefuck 3.28
 tldr 1.3.0_2
-tmux 2.8
-torsocks 2.2.0
-tree 1.8.0
-unibilium 2.0.0
-webp 1.0.1
-wget 1.19.5
 xz 5.2.4
-yarn 1.10.1 1.12.3
 zsh 5.6.2_1
-zsh-completions 0.29.0 0.28.0
+zsh-completions 0.29.0
