@@ -6,7 +6,7 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 zmodload zsh/zprof
 
 SAVEHIST=1000
-DEFAULT_USER="__USER__"
+DEFAULT_USER="___USER___"
 skip_global_compinit=1
  
 # Load the oh-my-zsh's library.
@@ -128,7 +128,17 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/Users/$DEFAULT_USER/shellscripts/bin:$PATH"
 export PATH="/Users/$DEFAULT_USER/anaconda/bin:$PATH"
 
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# ANDROID PATH
+export ANDROID_HOME="/Users/$DEFAULT_USER/Library/Android/sdk"
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 zprof
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
