@@ -6,7 +6,7 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 zmodload zsh/zprof
 
 SAVEHIST=1000
-DEFAULT_USER="___USER___"
+DEFAULT_USER="zualexander"
 skip_global_compinit=1
  
 # Load the oh-my-zsh's library.
