@@ -5,7 +5,8 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 
 zmodload zsh/zprof
 
-SAVEHIST=1000
+
+SAVEHIST=10000
 DEFAULT_USER="___USER___"
 skip_global_compinit=1
  
@@ -19,12 +20,16 @@ antigen use oh-my-zsh
 # git and git- extra commands
 antigen bundle git
 antigen bundle unixorn/git-extra-commands
+antigen bundle git-extras
 
 # bitbucket
 antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
 
 # colored man pages
 antigen bundle colored-man-pages
+
+# alias tips
+antigen bundle djui/alias-tips
 
 antigen bundle command-not-found
 antigen bundle extract
@@ -119,7 +124,7 @@ if [ -f ~/.config/aliases ]; then
     source ~/.config/aliases
 fi
 # https://github.com/tj/git-extras/blob/master/man/git-feature.md#examples
-git alias fix "bug -a fix"
+# git-extras alias fix "bug -a fix"
 
 
 ## the fuck
@@ -155,11 +160,6 @@ alias java8='export JAVA_HOME=$JAVA_8_HOME'
 alias java11='export JAVA_HOME=$JAVA_11_HOME'
 alias java12='export JAVA_HOME=$JAVA_12_HOME'
 
-
-# JBOSS
-export JBOSS_HOME=/usr/local/opt/wildfly-as/libexec
-export PATH=${PATH}:${JBOSS_HOME}/bin
-
 java8
 
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -170,4 +170,3 @@ zprof
 
 # language
 alias git='LANG=en_GB git'
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
