@@ -34,6 +34,9 @@ antigen bundle djui/alias-tips
 antigen bundle brew
 antigen bundle brew-cask
 
+# autocomplete for maven
+antigen bundle mvn
+
 # suggest install when command not found
 antigen bundle command-not-found 
 
