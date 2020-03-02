@@ -2,9 +2,7 @@
 source $(brew --prefix)/share/antigen/antigen.zsh
 
 #comment in for performance tracking (and also zprof at the end of the file)
-
 zmodload zsh/zprof
-
 
 SAVEHIST=10000
 DEFAULT_USER="___USER___"
@@ -13,14 +11,15 @@ skip_global_compinit=1
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
-#####################################################################################################
-# antigen bundles to load (for a complete list see https://github.com/unixorn/awesome-zsh-plugins )#
+####################################################################################################
+# antigen bundles to load (for a complete list see https://github.com/unixorn/awesome-zsh-plugins)#
+#										OR https://github.com/ohmyzsh/ohmyzsh/wiki/Plugins#extract#
 ####################################################################################################
 
 # git and git- extra commands
 antigen bundle git
-antigen bundle unixorn/git-extra-commands
 antigen bundle git-extras
+antigen bundle unixorn/git-extra-commands
 
 # bitbucket
 antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
@@ -31,13 +30,16 @@ antigen bundle colored-man-pages
 # alias tips
 antigen bundle djui/alias-tips
 
-antigen bundle command-not-found
-antigen bundle extract
-
 # brew autocompletion
 antigen bundle brew
 antigen bundle brew-cask
- 
+
+# suggest install when command not found
+antigen bundle command-not-found 
+
+# extract archive files
+antigen bundle extract
+
 #iterm color tab
 #antigen bundle tysonwolker/iterm-tab-colors
 
@@ -48,13 +50,12 @@ antigen bundle docker-compose
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
  
- 
 # suggestions
 antigen bundle tarruda/zsh-autosuggestions
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=8
 
-
-# antigen bundle mafredri/zsh-async
+antigen bundle zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 
 # Load the theme.
@@ -124,7 +125,7 @@ if [ -f ~/.config/aliases ]; then
     source ~/.config/aliases
 fi
 # https://github.com/tj/git-extras/blob/master/man/git-feature.md#examples
-# git-extras alias fix "bug -a fix"
+git alias fix "bug -a fix"
 
 
 ## the fuck
@@ -160,13 +161,17 @@ alias java8='export JAVA_HOME=$JAVA_8_HOME'
 alias java11='export JAVA_HOME=$JAVA_11_HOME'
 alias java12='export JAVA_HOME=$JAVA_12_HOME'
 
+
+# JBOSS
+export JBOSS_HOME=/usr/local/opt/wildfly-as/libexec
+export PATH=${PATH}:${JBOSS_HOME}/bin
+
 java8
-
-fpath=(/usr/local/share/zsh-completions $fpath)
-
-zprof
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # language
 alias git='LANG=en_GB git'
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+zprof
