@@ -123,8 +123,10 @@ alias ia="open $1 -a /Applications/iA\ Writer.app"
 if [ -f ~/.config/aliases ]; then
     source ~/.config/aliases
 fi
+
+# git-extras aliases
 # https://github.com/tj/git-extras/blob/master/man/git-feature.md#examples
-# git-extras alias fix "bug -a fix"
+git alias fix "feature -a fix"
 
 
 ## the fuck
