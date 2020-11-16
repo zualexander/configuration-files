@@ -127,6 +127,7 @@ fi
 # git-extras aliases
 # https://github.com/tj/git-extras/blob/master/man/git-feature.md#examples
 git alias fix "feature -a fix"
+git alias core "feature -a core"
 
 
 ## the fuck
