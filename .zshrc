@@ -5,7 +5,6 @@ source $(brew --prefix)/share/antigen/antigen.zsh
 
 zmodload zsh/zprof
 
-
 SAVEHIST=10000
 DEFAULT_USER="___USER___"
 skip_global_compinit=1
@@ -23,7 +22,7 @@ antigen bundle unixorn/git-extra-commands
 antigen bundle git-extras
 
 # bitbucket
-antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
+#antigen bundle unixorn/bitbucket-git-helpers.plugin.zsh
 
 # colored man pages
 antigen bundle colored-man-pages
@@ -31,12 +30,18 @@ antigen bundle colored-man-pages
 # alias tips
 antigen bundle djui/alias-tips
 
-antigen bundle command-not-found
-antigen bundle extract
-
 # brew autocompletion
 antigen bundle brew
 antigen bundle brew-cask
+
+# autocomplete for maven
+antigen bundle mvn
+
+# suggest install when command not found
+antigen bundle command-not-found 
+
+# extract archive files
+antigen bundle extract
  
 #iterm color tab
 #antigen bundle tysonwolker/iterm-tab-colors
@@ -53,8 +58,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle tarruda/zsh-autosuggestions
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=8
 
-
-# antigen bundle mafredri/zsh-async
+antigen bundle zsh-completions
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 
 # Load the theme.
@@ -142,9 +147,17 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/Users/$DEFAULT_USER/shellscripts/bin:$PATH"
 export PATH="/Users/$DEFAULT_USER/anaconda/bin:$PATH"
 
+# own functions -> should be moved to other file, and added to copy pipeline for git sync
+
+# get shell of given docker container id
+dexec ()
+{
+  docker exec -it $1 sh
+}
+
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # ANDROID PATH
 export ANDROID_HOME="/Users/$DEFAULT_USER/Library/Android/sdk"
