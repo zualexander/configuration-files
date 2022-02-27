@@ -91,9 +91,9 @@ SPACESHIP_PROMPT_ORDER=(
 #  julia         # Julia section
   docker        # Docker section
 #  aws           # Amazon Web Services section
-#  venv          # virtualenv section
+  venv          # virtualenv section
    conda         # conda virtualenv section
-#  pyenv         # Pyenv section
+  pyenv         # Pyenv section
 #  dotnet        # .NET section
 #  ember         # Ember.js section
 #  kubecontext   # Kubectl context section
@@ -121,9 +121,10 @@ antigen apply
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="code ~/.zshrc"
 alias ia="open $1 -a /Applications/iA\ Writer.app"
-
+alias bacc-doc="cd /Users/zualexander/Google\ Drive/Fachhochschule/bic/bacc-work/doc"
+alias bacc-ws="cd /Users/zualexander/Documents/workspace/workspace-bic/bacc-work"
 if [ -f ~/.config/aliases ]; then
     source ~/.config/aliases
 fi
@@ -186,34 +187,41 @@ alias java12='export JAVA_HOME=$JAVA_12_HOME'
 export JBOSS_HOME=/usr/local/opt/wildfly-as/libexec
 export PATH=${PATH}:${JBOSS_HOME}/bin
 
+## PYTHON
+
 # CUDA related exports
 export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
-# pyenv
-if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+#pyenv
+export PATH=$(pyenv root)/shims:$PATH
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
-java8
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# language
-alias git='LANG=en_GB git'
-
-zprof
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/local/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+# 	echo "eval condasetup"
+#     eval "$__conda_setup"
+# else
+# 	echo "elsecondasetup"
+#     if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
+# 		echo "execute"
+#         . "/usr/local/anaconda3/etc/profile.d/conda.sh"
+#     else
+# 		echo "path"
+#         export PATH="/usr/local/anaconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
+#activate javaversion 8 per default
+java8
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# language
+alias git='LANG=en_GB git'
