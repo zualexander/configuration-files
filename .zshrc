@@ -1,3 +1,6 @@
+#init brew - add to $PATH
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # load antigen
 source $(brew --prefix)/share/antigen/antigen.zsh
 
@@ -48,7 +51,7 @@ antigen bundle extract
 
 # docker code completion
 antigen bundle docker
-antigen bundle docker-compose
+antigen bundle chr-fritz/docker-completion.zshplugin
  
 # Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
@@ -62,6 +65,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 
 # Load the theme.
+antigen theme romkatv/powerlevel10k
 # antigen bundle sindresorhus/pure # https://github.com/sindresorhus/pure
 # or
 # antigen theme robbyrussell #
@@ -70,44 +74,52 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # or
 # antigen theme agnoster 
 # or
-antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
-SPACESHIP_PROMPT_ORDER=(
-  time          # Time stampts section
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-#  hg            # Mercurial section (hg_branch  + hg_status)
-  package       # Package version
-  node          # Node.js section
-  ruby          # Ruby section
-#  elixir        # Elixir section
-#  xcode         # Xcode section
-#  swift         # Swift section
-#  golang        # Go section
-#  php           # PHP section
-#  rust          # Rust section
-#  haskell       # Haskell Stack section
-#  julia         # Julia section
-  docker        # Docker section
-#  aws           # Amazon Web Services section
-  venv          # virtualenv section
-   conda         # conda virtualenv section
-  pyenv         # Pyenv section
-#  dotnet        # .NET section
-#  ember         # Ember.js section
-#  kubecontext   # Kubectl context section
-  exec_time     # Execution time
-  line_sep      # Line break
-  battery       # Battery level and status
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
+#antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
+#SPACESHIP_PROMPT_ORDER=(
+#  time          # Time stampts section
+#  user          # Username section
+#  dir           # Current directory section
+#  host          # Hostname section
+#  git           # Git section (git_branch + git_status)
+##  hg            # Mercurial section (hg_branch  + hg_status)
+#  package       # Package version
+#  node          # Node.js section
+#  ruby          # Ruby section
+##  elixir        # Elixir section
+##  xcode         # Xcode section
+##  swift         # Swift section
+##  golang        # Go section
+##  php           # PHP section
+##  rust          # Rust section
+##  haskell       # Haskell Stack section
+##  julia         # Julia section
+#  docker        # Docker section
+##  aws           # Amazon Web Services section
+##  venv          # virtualenv section
+#   conda         # conda virtualenv section
+##  pyenv         # Pyenv section
+##  dotnet        # .NET section
+##  ember         # Ember.js section
+##  kubecontext   # Kubectl context section
+#  exec_time     # Execution time
+#  line_sep      # Line break
+#  battery       # Battery level and status
+#  vi_mode       # Vi-mode indicator
+#  jobs          # Background jobs indicator
+#  exit_code     # Exit code section
+#  char          # Prompt character
+#)
 
 # Tell antigen that you're done.
 antigen apply
+
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 
 ##############################################################################
@@ -122,9 +134,6 @@ antigen apply
 #
 # Example aliases
 alias zshconfig="code ~/.zshrc"
-alias ia="open $1 -a /Applications/iA\ Writer.app"
-alias bacc-doc="cd /Users/zualexander/Google\ Drive/Fachhochschule/bic/bacc-work/doc"
-alias bacc-ws="cd /Users/zualexander/Documents/workspace/workspace-bic/bacc-work"
 if [ -f ~/.config/aliases ]; then
     source ~/.config/aliases
 fi
@@ -138,16 +147,19 @@ git alias chore "feature -a chore"
 git alias doc "feature -a doc"
 git alias style "feature -a style"
 git alias refactor "feature -a refactor"
-git alias teset "feature -a test"
+git alias test "feature -a test"
 
+
+# docker aliases
+alias dco="docker compose"
 
 ## the fuck
   eval $(thefuck --alias)
  
 # nvm
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # own shell scripts
 export PATH="/Users/$DEFAULT_USER/shellscripts/bin:$PATH"
@@ -169,18 +181,7 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 export ANDROID_HOME="/Users/$DEFAULT_USER/Library/Android/sdk"
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/build-tools/28.0.3
 
-# Java installations (only if they are installed)
-export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-#export JAVA_9_HOME=$(/usr/libexec/java_home -v9)
-#export JAVA_10_HOME=$(/usr/libexec/java_home -v10)
-export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-export JAVA_12_HOME=$(/usr/libexec/java_home -v12)
-
-alias java8='export JAVA_HOME=$JAVA_8_HOME'
-#alias java9='export JAVA_HOME=$JAVA_9_HOME'
-#alias java10='export JAVA_HOME=$JAVA_10_HOME'
-alias java11='export JAVA_HOME=$JAVA_11_HOME'
-alias java12='export JAVA_HOME=$JAVA_12_HOME'
+alias java17='export JAVA_HOME=$JAVA_17_HOME'
 
 
 # JBOSS
@@ -193,35 +194,34 @@ export PATH=${PATH}:${JBOSS_HOME}/bin
 export PATH=/usr/local/cuda-10.1/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
-#pyenv
-export PATH=$(pyenv root)/shims:$PATH
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# pyenv
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/usr/local/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-# 	echo "eval condasetup"
-#     eval "$__conda_setup"
-# else
-# 	echo "elsecondasetup"
-#     if [ -f "/usr/local/anaconda3/etc/profile.d/conda.sh" ]; then
-# 		echo "execute"
-#         . "/usr/local/anaconda3/etc/profile.d/conda.sh"
-#     else
-# 		echo "path"
-#         export PATH="/usr/local/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# <<< conda initialize <<<
-
-#activate javaversion 8 per default
 java8
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # language
 alias git='LANG=en_GB git'
+
+# conda
+export PATH="/usr/local/anaconda3/bin:$PATH"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+zprof
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/homebrew/Caskroom/miniforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/homebrew/Caskroom/miniforge/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
