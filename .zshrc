@@ -30,6 +30,9 @@ antigen bundle colored-man-pages
 # alias tips
 antigen bundle djui/alias-tips
 
+# commonly used commands aliases
+antigen bundle common-aliases
+
 # brew autocompletion
 antigen bundle brew
 antigen bundle brew-cask
@@ -190,7 +193,12 @@ export LD_LIBRARY_PATH=/usr/local/cuda-10.1/lib64${LD_LIBRARY_PATH:+:${LD_LIBRAR
 # pyenv
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+#fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fuzzy search change directory
+source ~/.zsh-interactive-cd.plugin.zsh
+
 # language
 alias git='LANG=en_GB git'
 
